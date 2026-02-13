@@ -35,14 +35,23 @@ export default function LandingPage() {
     setLoading(true)
 
     try {
-      // You can integrate with services like:
-      // - Mailchimp
-      // - ConvertKit
-      // - Resend
-      // - SendGrid
-      // - Or any email marketing service
-      
-      // Example placeholder - replace with your email service
+const response = await fetch('https://api.freewaitlists.com/waitlists/cmlkdp6ur00aq01p2muoztrtg', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    email, // Mandatory field
+    meta: { 
+      name,
+      businessType
+      // Put anything you want here -> key: value
+    }
+  })
+});
+
+const result = await response.json();
+console.log(result);
       console.log('Waitlist submission:', { email, name, businessType })
       
       // Simulate API call
@@ -70,8 +79,8 @@ export default function LandingPage() {
             <Image src="/purplelogo.png" alt="Powwow Logo" width={120} height={120} />
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/auth">
-              <Button variant="ghost" className="text-[#a90dca] hover:text-[#8a0ba8] hover:bg-purple-50">
+            <Link href="/">
+              <Button variant="ghost" className="text-[#a90dca] hover:text-[#8a0ba8] hover:bg-purple-50 disabled cursor-not-allowed">
                 Sign In
               </Button>
             </Link>
