@@ -1,6 +1,6 @@
 "use client"
 // import Logo from "../../purplelogo.png"
-import { useState } from "react"
+import { useState, FormEvent } from "react"
 import Link from "next/link"
 import Image from "next/image"
 // Fallback Button component used when '@/components/ui/button' cannot be resolved
@@ -28,7 +28,7 @@ export default function LandingPage() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState("")
 
-  const handleWaitlistSubmit = async (e) => {
+  const handleWaitlistSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError("")
     setSuccess(false)
